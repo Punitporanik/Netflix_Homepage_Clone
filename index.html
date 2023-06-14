@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Netflix</title>
+    <!-- //  <link rel="stylesheet" href="style.css">
+<!-- <link rel="stylesheet" href="mediaquery.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <script src="https://kit.fontawesome.com/bc3a1796c2.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="https://image.flaticon.com/icons/png/512/870/870910.ico'/> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" /> --> -->
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap");
+        @import url("https://fonts.googleapis.com/css?family=Martel+Sans&display=swap");
+        @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+
+        body {
+            margin: 0;
+            padding: 0;
+            flex-wrap: wrap;
+            display: flex;
+            font-family: "Roboto", sans-serif;
+            background-color: rgba(8, 8, 8, 0.89);
+        }
+
+        .navbar {
+            display: flex;
+            flex-direction: row;
+            position: relative;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            min-height: 100px;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent;
+            align-self: center;
+        }
+
+        .navbar li {
+            margin: 0 50px;
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .navbar li:nth-child(2) {
+            margin-top: -10px;
+            margin-right: 70px;
+        }
+
+        .logo img {
+            width: 180px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            align-self: center;
+        }
+
+        .buttons {
+            background-color: #e50914;
+            padding: 7px 17px;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            border-radius: 3px;
+        }
+
+        .main {
+            width: 100%;
+            margin-top: -100px;
+            background-size: cover;
+            align-items: center;
+            overflow-x: hidden;
+            justify-content: center;
+            display: flex;
+            background-position: center;
+            min-height: 710px;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+                url(https://assets.nflxext.com/ffe/siteui/vlv3/a1dc92ca-091d-4ca9-a05b-8cd44bbfce6a/f9368347-e982-4856-a5a4-396796381f28/RS-en-20191230-popsignuptwoweeks-perspective_alpha_website_large.jpg);
+        }
+
+        .area {
+            color: white;
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .area h1 {
+            font-size: 60px;
+            word-spacing: 15px;
+            line-height: 75px;
+        }
+
+        .area h3 {
+            margin-top: -30px;
+            font-size: 27px;
+            font-weight: normal;
+        }
+
+        .search {
+            width: 150%;
+            background-color: none;
+            min-height: 80px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .box {
+            width: 100%;
+            min-height: 65px;
+        }
+
+        .try {
+            display: inline-flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background-color: #e50914;
+            min-height: 70px;
+            width: 70%;
+            font-size: 30px;
+            text-transform: uppercase;
+        }
+
+        .area h4 {
+            margin-top: 10px;
+            font-weight: normal;
+        }
+
+        .container1 {
+            width: 100%;
+            min-height: 460px;
+            background-color: black;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            text-align: left;
+        }
+
+        .container1 img {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            object-fit: contain;
+            object-position: center;
+            align-self: center;
+            max-width: 100%;
+            height: 350px;
+        }
+
+        .container1 .image {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+            align-self: center;
+            object-fit: contain;
+        }
+
+        .text {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            align-self: center;
+            align-content: center;
+        }
+
+        .text p {
+            font-size: 1.5rem;
+            margin-top: 5px;
+        }
+
+        .text h1 {
+            font-size: 3.125rem;
+        }
+
+        .question {
+            width: 100%;
+            min-height: 950px;
+            background-color: #000;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            text-align: center;
+        }
+
+        .question h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .quest {
+            width: 51%;
+            min-height: 75px;
+            background-color: #303030;
+            color: white;
+            align-items: center;
+            justify-content: space-between;
+            display: flex;
+            text-align: left;
+            flex-direction: row;
+            margin: 5px 0;
+        }
+
+        .quest .textbox {
+            display: flex;
+            text-align: left;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            justify-items: center;
+            align-self: center;
+            font-size: 25px;
+            margin: 0 30px;
+            word-spacing: 5px;
+            text-align: left;
+        }
+
+        .quest i {
+            margin: 0 30px;
+            font-size: 40px;
+            color: rgb(255, 255, 255);
+        }
+
+        .quest:focus {
+            background-color: red;
+        }
+
+        .search1 {
+            width: 50%;
+            background-color: none;
+            min-height: 80px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .box1 {
+            width: 100%;
+            min-height: 65px;
+        }
+
+        .try1 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background-color: #e50914;
+            min-height: 70px;
+            width: 70%;
+            color: white;
+            font-size: 30px;
+            margin: 50px 0;
+            text-transform: uppercase;
+        }
+
+        .question h4 {
+            color: white;
+            margin-top: -20px;
+            padding-bottom: 40px;
+        }
+
+        .footer {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-height: 375px;
+            background-color: black;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .footercon {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            min-height: 50px;
+            background-color: transparent;
+        }
+
+        .footer .flex1 {
+            color: #999;
+            ;
+            justify-content: space-around;
+            align-items: flex-start;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            width: 100%;
+            font-size: 17px;
+            min-height: 30px;
+        }
+
+        .footer .flex1 h5 {
+            align-self: flex-start;
+        }
+
+        .list1 {
+            color: white;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-items: flex-start;
+            align-self: center;
+            justify-content: center;
+            min-height: 50px;
+            font-size: 13px;
+            padding: 0px 70px;
+            text-align: left;
+        }
+
+        .list1 li {
+            font-size: 13px;
+            margin: 7px -10px;
+            list-style-type: none;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-items: center;
+            align-self: flex-start;
+            justify-content: center;
+        }
+
+        .list1 li a {
+            color: #999;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        li a {
+            font-size: 13px;
+            text-align: center;
+            color: #999;
+        }
+
+        .footertxt {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: flex-end;
+        }
+
+        .end {
+            width: 100%;
+            min-height: 50px;
+            background-color: black;
+            justify-content: space-around;
+            align-items: flex-start;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            color: #999;
+            margin-top: -60px;
+        }
+
+        .end h2 {
+            display: flex;
+            flex-direction: row;
+            font-size: 16px;
+        }
+
+        @media (min-width: 250px) and (max-width: 980px) {
+            body {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+            }
+
+            .container1 {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                align-items: center;
+                align-self: center;
+            }
+
+            .area h1 {
+                font-size: 40px;
+                line-height: 60px;
+            }
+
+            .area h3 {
+                margin-top: 10px;
+            }
+
+            .container1 img {
+                width: 60%;
+            }
+
+            .navbar {
+                display: flex;
+                flex-direction: column;
+                background-color: rgb(167, 51, 51);
+                align-items: center;
+                justify-content: center;
+                padding: 0;
+                min-height: 250px;
+                margin-bottom: 30px;
+                float: left;
+            }
+
+            .search {
+                display: flex;
+                flex-direction: column;
+                margin: 30px;
+                width: 50%;
+                margin: 0 10px;
+            }
+
+            .box {
+                width: 100%;
+                margin-bottom: 20px;
+                margin: 30px;
+            }
+
+            .try {
+                width: 200px;
+                margin: 0 10px;
+                font-size: 17px;
+                min-height: 50px;
+            }
+
+            .search1 {
+                display: flex;
+                flex-direction: column;
+                margin: 30px;
+                width: 50%;
+                margin: 0 10px;
+                margin-bottom: 40px;
+            }
+
+            h4 {
+                color: white;
+            }
+
+            .box1 {
+                width: 100%;
+                margin-bottom: 20px;
+                margin: 30px;
+            }
+
+            .try1 {
+                width: 200px;
+                margin: 0 10px;
+                font-size: 17px;
+                min-height: 50px;
+            }
+
+            .text {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                align-self: center;
+                text-align: center;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .text h1 {
+                font-size: 2rem;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .text p {
+                font-size: 1.2rem;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .quest .textbox {
+                font-size: 20px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+
+            .quest {
+                width: 80%;
+                min-height: 75px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <li class="logo"><img
+                src="data:image/png;base64,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">
+        </li>
+        <li class="buttons">Sign In</a>
+    </div>
+    <div class="main">
+        <div class="area">
+            <h1>Unlimited movies, TV <br>shows, and more.</h1>
+            <h3>Watch anywhere. Cancel anytime. </h3>
+            <div class="search">
+                <input type="text"
+                    class="box"
+                    placeholder="Email">
+                <span class="try"> Try 30 days free <i class="fas fa-chevron-right"></i>
+                </span>
+            </div>
+            <h4>Ready to watch? Enter your email to create or access your account </h4>
+        </div>
+    </div>
+    <div class="container1">
+        <div class="text">
+            <h1>Enjoy on your TV. </h1>
+            <p> Watchx on Smart TVs, Playstation, Xbox, <br> Chromecast, Apple TV, Blu-ray players, and<br> more. </p>
+        </div>
+        <div class="image">
+            <img
+                src="https://i0.wp.com/www.smartprix.com/bytes/wp-content/uploads/2019/12/FireShot-Capture-327-Free-Netflix-Remote-OnePlus-In_-https___www.oneplus.in_netflix-remote-tv-e1575893718802.png?fit=822%2C549&ssl=1">
+        </div>
+    </div>
+    <div class="container1">
+        <div class="image">
+            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/mobile.png">
+        </div>
+        <div class="text">
+            <h1>Download your shows to watch on the go. </h1>
+            <p> Save your data and watch all your favorites offline. </p>
+        </div>
+    </div>
+    <div class="container1">
+        <div class="text">
+            <h1>Watch everywhere. </h1>
+            <p> Stream unlimited movies and TV shows on <br>your phone, tablet, laptop, and TV without paying more. </p>
+        </div>
+        <div class="image">
+            <img src="https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/device-pile.png">
+        </div>
+    </div>
+    <div class="question">
+        <h1>Frequently Asked Questions </h1>
+        <div class="quest">
+            <div class="textbox">What is Netflix?</div>
+            <i class="las la-plus"></i>
+        </div>
+        <div class="quest">
+            <div class="textbox">How much does Netflix cost?</div>
+            <i class="las la-plus"></i>
+        </div>
+        <div class="quest">
+            <div class="textbox">Where can I watch?</div>
+            <i class="las la-plus"></i>
+        </div>
+        <div class="quest">
+            <div class="textbox">How do I cancel?</div>
+            <i class="las la-plus"></i>
+        </div>
+        <div class="quest">
+            <div class="textbox">What can I watch on Netflix??</div>
+            <i class="las la-plus"></i>
+        </div>
+        <div class="quest">
+            <div class="textbox">What is Netflix?</div>
+            <i class="las la-plus"></i>
+        </div>
+        <div class="search1">
+            <input type="text"
+                class="box1"
+                placeholder="Email">
+            <span class="try1"> Try 30 days free <i class="fas fa-chevron-right"></i>
+            </span>
+        </div>
+        <h4>Ready to watch? Enter your email to create or access your account </h4>
+    </div>
+    <div class="footer">
+        <div class="footercon">
+            <div class="flex1">
+                <h5>Questions? Call 1-866-579-7172 </h5>
+                <h5>
+                </h5>
+            </div>
+            <ul class="list1">
+                <li><a href="">FAQ</a></li>
+                <li><a href="">Investor Relation</a></li>
+                <li><a href="">Ways to Watch</a></li>
+                <li><a href="">Corporate Information</a></li>
+                <li><a href="">Netflix Originals</a></li>
+            </ul>
+            <ul class="list1">
+                <li><a href="">Home</a></li>
+                <li><a href="">Jobs</a></li>
+                <li><a href="">Terms of Use</a></li>
+                <li><a href="">Contact Us</a></li>
+                <li><a href="">#</a></li>
+            </ul>
+            <ul class="list1">
+                <li><a href="">Account</a></li>
+                <li><a href="">Redeem Gift Cards</a></li>
+                <li><a href="">Privacy</a></li>
+                <li><a href="">Speed Test</a></li>
+                <li><a href="">#</a></li>
+            </ul>
+            <ul class="list1">
+                <li><a href="">Media Center<< /a>
+                </li>
+                <li><a href="">Buy Gift Cards</a></li>
+                <li><a href="">Cookie Preferences</a></li>
+                <li><a href="">Legal Notices</a></li>
+                <li><a href="">#</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="end">
+        <h2> Netflix US </h2>
+        <h2>
+        </h2>
+    </div>
+</body>
+
+</html>
